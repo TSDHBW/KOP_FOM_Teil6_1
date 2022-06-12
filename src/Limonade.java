@@ -1,4 +1,4 @@
-public class Limonade extends BasisRezeptGetraenk {
+public class Limonade extends BasisRezeptGetraenk implements Verkaufspreis {
 
     private String fruchtgeschmack;
     private Boolean herstellungInHouse;
@@ -33,4 +33,24 @@ public class Limonade extends BasisRezeptGetraenk {
         this.herstellungInHouse = herstellungInHouse;
     }
 
+    @Override
+    public double getAufschlag() {
+        if (herstellungInHouse == true){
+            return 2.50;
+        } else {
+            return 2.0;
+        }
+    }
+
+    @Override
+    public double ermittelVerkaufspreis() {
+        double verkaufspreis = 0.0;
+        for (int i = 0; i < getZutaten().length; i++){
+            if (getZutaten()[i] != null){
+                verkaufspreis = verkaufspreis + getZutaten()[i].getPreis();
+            }
+        }
+        verkaufspreis = verkaufspreis + getAufschlag() + BASISPREIS;
+        return verkaufspreis;
+    }
 }

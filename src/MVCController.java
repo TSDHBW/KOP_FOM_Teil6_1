@@ -55,9 +55,21 @@ public class MVCController {
         model.rezeptverwaltung.nehmeRezeptAuf(orangenlimo);
         model.rezeptverwaltung.zeigeAlleRezepteAn();
         model.rezeptverwaltung.zeigeRezeptAn("Orangenlimo", "Limonade");
+        System.out.println("---");
+        BasisRezept[] speisen = {zitronenlimo, orangenlimo, caipirinha, zitronenlimo};
+        System.out.println("Gesamtpreis: " + ermittleGesamtpreis(speisen));
 
 
     }
 
+        public double ermittleGesamtpreis(Verkaufspreis[]speisen){
 
+            double verkaufspreis = 0.0;
+            for (int i = 0; i < speisen.length; i++){
+                if (speisen[i] != null){
+                    verkaufspreis = verkaufspreis + speisen[i].ermittelVerkaufspreis();
+                }
+            }
+            return verkaufspreis;
+        }
 }
