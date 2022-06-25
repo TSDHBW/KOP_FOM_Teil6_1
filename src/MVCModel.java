@@ -6,6 +6,7 @@
 public class MVCModel {
 
     Rezeptverwaltung rezeptverwaltung;
+    Zutatenverwaltung zutatenverwaltung;
 
     public MVCModel(){
 
@@ -16,6 +17,7 @@ public class MVCModel {
     public void init(){
 
         rezeptverwaltung = new Rezeptverwaltung();
+        zutatenverwaltung = new Zutatenverwaltung();
         System.out.println("Initialisieren des Datenmodells abgeschlossen");
 
     }

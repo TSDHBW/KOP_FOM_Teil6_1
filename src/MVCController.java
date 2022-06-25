@@ -22,12 +22,19 @@ public class MVCController {
     public void testeRezeptverwaltung(){
 
         Zutat zitrone = new Zutat("Zitrone", 1.00);
+        model.zutatenverwaltung.nehmeZutatAuf(zitrone);
         Zutat orange = new Zutat("Orange", 1.50);
+        model.zutatenverwaltung.nehmeZutatAuf(orange);
         Zutat minze = new Zutat("Minze", 0.75);
+        model.zutatenverwaltung.nehmeZutatAuf(minze);
         Zutat zucker = new Zutat("Zucker", 0.25);
+        model.zutatenverwaltung.nehmeZutatAuf(zucker);
         Zutat wasser = new Zutat("Wasser", 0.10);
+        model.zutatenverwaltung.nehmeZutatAuf(wasser);
         Zutat eis = new Zutat("Eis", 0.50);
+        model.zutatenverwaltung.nehmeZutatAuf(eis);
         Zutat limette = new Zutat("Limette", 2.00);
+        model.zutatenverwaltung.nehmeZutatAuf(limette);
 
         Zutat[] zutatenOrangenlimo = {orange, minze, wasser, eis};
         Limonade orangenlimo = new Limonade("Orangenlimo", zutatenOrangenlimo, false,true, "Orange", true);
