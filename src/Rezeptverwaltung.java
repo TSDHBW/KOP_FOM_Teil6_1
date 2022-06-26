@@ -132,8 +132,24 @@ public class Rezeptverwaltung {
 
     public BasisRezept getRezept(String rezeptname, String rezeptart){
 
-        // zu implmeneiteren
+        boolean aktualisiert = false;
+        for (int i = 0; i < rezepte.length; i++){
+
+            if (rezepte[i] != null){
+
+                if (rezepte[i].getName().equals(rezeptname) && rezepte[i].getTyp().equals(rezeptart)){
+
+                    return rezepte[i];
+
+                }
+            }
+        }
+
+        if (aktualisiert == false){
+            System.out.println("Rezept nicht gefunden");
+        }
         return null;
+
     }
 
     public BasisRezept[] getRezepte() {

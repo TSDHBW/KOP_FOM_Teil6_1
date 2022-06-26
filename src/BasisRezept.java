@@ -1,4 +1,4 @@
-public abstract class BasisRezept implements Verkaufspreis {
+public abstract class BasisRezept{
 
     private String name;
     private Zutat[] zutaten;

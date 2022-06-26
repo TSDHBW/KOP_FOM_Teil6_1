@@ -63,7 +63,7 @@ public class MVCController {
         model.rezeptverwaltung.zeigeAlleRezepteAn();
         model.rezeptverwaltung.zeigeRezeptAn("Orangenlimo", "Limonade");
         System.out.println("---");
-        BasisRezept[] speisen = {zitronenlimo, orangenlimo, caipirinha, zitronenlimo};
+        Verkaufspreis[] speisen = {zitronenlimo, orangenlimo, caipirinha, zitronenlimo};
         System.out.println("Gesamtpreis: " + ermittleGesamtpreis(speisen));
 
 
