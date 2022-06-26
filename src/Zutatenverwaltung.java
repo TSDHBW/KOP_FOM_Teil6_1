@@ -123,6 +123,15 @@ public class Zutatenverwaltung {
         return null;
     }
 
+    public Zutat sucheZutat(){
+        // zu implementieren
+        return null;
+    }
+
+    public void aendereZutatenPreis(){
+        // zu implementieren
+    }
+
     public Zutat[] getRezepte() {
         return zutaten;
     }
