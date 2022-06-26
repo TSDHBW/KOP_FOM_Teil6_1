@@ -63,20 +63,39 @@ public class MVCController {
         model.rezeptverwaltung.zeigeAlleRezepteAn();
         model.rezeptverwaltung.zeigeRezeptAn("Orangenlimo", "Limonade");
         System.out.println("---");
-        Verkaufspreis[] speisen = {zitronenlimo, orangenlimo, caipirinha, zitronenlimo};
-        System.out.println("Gesamtpreis: " + ermittleGesamtpreis(speisen));
+        Verkaufspreis[] speisen = {zitronenlimo, orangenlimo};
+        System.out.println("Gesamtpreis: " + ermittleGesamtpreis(speisen, false));
+        System.out.println("---");
+        System.out.println("Gesamtpreis Kochbox " + ermittleGesamtpreis(speisen, true));
 
 
     }
 
-        public double ermittleGesamtpreis(Verkaufspreis[]speisen){
+    public double ermittleGesamtpreis(Verkaufspreis[]speisen, boolean kochbox) {
 
-            double verkaufspreis = 0.0;
-            for (int i = 0; i < speisen.length; i++){
-                if (speisen[i] != null){
+        double verkaufspreis = 0.0;
+        if (kochbox == false) {
+
+            for (int i = 0; i < speisen.length; i++) {
+                if (speisen[i] != null) {
                     verkaufspreis = verkaufspreis + speisen[i].ermittelVerkaufspreis();
                 }
             }
-            return verkaufspreis;
+
+        } else {
+
+            for (int i = 0; i < speisen.length; i++){
+                if (speisen[i] != null){
+                    BasisRezept rezept = (BasisRezept) speisen[i];
+                    for (int j = 0 ; j < rezept.getZutaten().length; j++){
+                        if (rezept.getZutaten()[j] != null){
+                            verkaufspreis = verkaufspreis + rezept.getZutaten()[j].ermittelVerkaufspreis();
+                        }
+                    }
+                    verkaufspreis = verkaufspreis + speisen[i].BASISPREIS;
+                }
+            }
         }
+        return verkaufspreis;
+    }
 }
