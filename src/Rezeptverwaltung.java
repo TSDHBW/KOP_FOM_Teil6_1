@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  * Klasse zur Generierung eines Objekts für die Rezeptverwaltung. Jede Rezeptverwaltung besitzt je ein Array für Rezepte für Pastagerichte, Fleischgerichte,
  * COcktais und Limonaden
@@ -83,17 +86,40 @@ public class Rezeptverwaltung {
 
                 if (rezepte[i].getName().equals(rezeptname) && rezepte[i].getTyp().equals(rezeptart)){
 
-                    System.out.println("Anzeige von Rezept:");
-                    System.out.println("Name: " + rezepte[i].getName());
-                    System.out.println("Rezeptart: " + rezepte[i].getTyp());
-                    System.out.print("Zutaten: ");
-                    for (int j = 0; j < rezepte[i].getZutaten().length; j++){
+                }
+            }
+        }
+    }
 
-                        System.out.print(rezepte[i].getZutaten()[j].getName() + " ");
+    public void zeigeRezeptAn(){
 
+        Scanner scanner = new Scanner(System.in);
+
+        try{
+            System.out.println("Index eingeben: ");
+            int index = scanner.nextInt();
+            // IndexOutOfBoundsException kann verhindert werden indem geprüft wird, ob
+            // der eingegebene Index innerhalb des Index-Range des Rezepte Array ist
+            // if (index >= 0 & index < rezepte.length)
+            if (rezepte[index] != null){
+                System.out.println("Anzeige von Rezept:");
+                System.out.println("Name: " + rezepte[index].getName());
+                System.out.println("Rezeptart: " + rezepte[index].getTyp());
+                System.out.print("Zutaten: ");
+                for (int j = 0; j < rezepte[index].getZutaten().length; j++){
+                    if (rezepte[index].getZutaten()[j] != null){
+                        System.out.print(rezepte[index].getZutaten()[j].getName() + " ");
                     }
                 }
             }
+        }catch (IndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+            System.out.println("Ungültigen Index!");
+        }catch (InputMismatchException e){
+            System.out.println(e.getMessage());
+            System.out.println("Ungültige Eingabe");
+        }finally {
+            //scanner.close();
         }
     }
 

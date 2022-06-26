@@ -67,7 +67,12 @@ public class MVCController {
         System.out.println("Gesamtpreis: " + ermittleGesamtpreis(speisen, false));
         System.out.println("---");
         System.out.println("Gesamtpreis Kochbox " + ermittleGesamtpreis(speisen, true));
-
+        model.rezeptverwaltung.zeigeRezeptAn();
+        Zutat zutat = model.zutatenverwaltung.sucheZutat();
+        if (zutat != null){
+            System.out.println(zutat.getName());
+            System.out.println(zutat.getPreis());
+        }
 
     }
 

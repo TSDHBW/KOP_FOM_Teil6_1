@@ -1,3 +1,6 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Zutatenverwaltung {
 
     private Zutat[] zutaten;
@@ -124,7 +127,27 @@ public class Zutatenverwaltung {
     }
 
     public Zutat sucheZutat(){
-        // zu implementieren
+        Scanner scanner = new Scanner(System.in);
+        boolean zutatGefunden = false;
+        try{
+            String name = scanner.nextLine();
+            for (int i = 0; i < zutaten.length; i++){
+                if (zutaten[i] != null){
+                    if (zutaten[i].getName().equals(name)){
+                        zutatGefunden = true;
+                        return zutaten[i];
+                    }
+                }
+            }
+        } catch (InputMismatchException e){
+            System.out.println(e.getMessage());
+            System.out.println("Ungeültige Eingabe");
+        } finally {
+            //scanner.close();
+        }
+        if (zutatGefunden == false){
+            System.out.println("Zutat nicht gefunden");
+        }
         return null;
     }
 
